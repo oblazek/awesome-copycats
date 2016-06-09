@@ -204,20 +204,25 @@ fswidget = lain.widgets.fs({
 -- Battery
 baticon = wibox.widget.imagebox(beautiful.widget_battery)
 batwidget = lain.widgets.bat({
+    battery = "BAT1",
     settings = function()
-        if bat_now.status == "Charging" then
+	if bat_now.status == "Full" then
 	   -- bat_perc = 100
             --widget:set_markup(" AC ")
             baticon:set_image(beautiful.widget_ac)
-        else 
-		baticon:set_image(beautiful.widget_battery)
+	    widget:set_markup("Full ")
+	elseif bat_now.status == "Charging" then 
+		baticon:set_image(beautiful.widget_ac)
 		widget:set_markup(" " .. first_line("/sys/class/power_supply/BAT1/capacity") .. "% ")
-		--tonumber(bat_now.perc) <= 5 then
+		--tkjjonumber(bat_now.perc) <= 5 then
             	--	baticon:set_image(beautiful.widget_battery_empty)
        	--elseif tonumber(bat_now.perc) <= 15 then
           --  		baticon:set_image(beautiful.widget_battery_low)
        	--else
           --  		baticon:set_image(beautiful.widget_battery)
+	else 
+		baticon:set_image(beautiful.widget_battery)
+		widget:set_markup(" " .. first_line("/sys/class/power_supply/BAT1/capacity") .. "% ")
         end
         --widget:set_markup(" " .. bat_now.perc .. "% ")
     end
