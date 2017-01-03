@@ -1,3 +1,6 @@
+[submodule "awesome-freedesktop"]
+	path = awesome-freedesktop
+	url = https://github.com/copycat-killer/awesome-freedesktop.git
 [submodule "lain"]
 	path = lain
-	url = git://github.com/copycat-killer/lain.git
+	url = https://github.com/copycat-killer/lain.git
